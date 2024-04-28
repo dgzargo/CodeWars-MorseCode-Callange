@@ -1,8 +1,10 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWars", "CodeWars\CodeWars.csproj", "{6F71A9ED-7E8B-4482-B01F-9139D3E22E75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMorseDecoder.Benchmark", "FastMorseDecoder.Benchmark\FastMorseDecoder.Benchmark.csproj", "{6F71A9ED-7E8B-4482-B01F-9139D3E22E75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWars.Tests", "CodeWars.Tests\CodeWars.Tests.csproj", "{C5C0F237-FEBC-4D2B-B441-9EE9A0FD6824}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMorseDecoder.Tests", "FastMorseDecoder.Tests\FastMorseDecoder.Tests.csproj", "{C5C0F237-FEBC-4D2B-B441-9EE9A0FD6824}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMorseDecoder", "FastMorseDecoder\FastMorseDecoder.csproj", "{14D0F00E-71E4-41BA-882E-A49B126C6D91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,9 @@ Global
 		{C5C0F237-FEBC-4D2B-B441-9EE9A0FD6824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5C0F237-FEBC-4D2B-B441-9EE9A0FD6824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5C0F237-FEBC-4D2B-B441-9EE9A0FD6824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D0F00E-71E4-41BA-882E-A49B126C6D91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D0F00E-71E4-41BA-882E-A49B126C6D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D0F00E-71E4-41BA-882E-A49B126C6D91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D0F00E-71E4-41BA-882E-A49B126C6D91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

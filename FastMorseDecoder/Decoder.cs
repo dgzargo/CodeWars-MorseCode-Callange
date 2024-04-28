@@ -1,21 +1,21 @@
-﻿namespace CodeWars;
+﻿namespace FastMorseDecoder;
 
-public static class MorseDecoder
+public static class Decoder
 {
     public static string DecodeBitsToText(string bits)
     {
-        var morseHelper = new MorseHelper(stackalloc char[MorseHelper.SpanLength], Preloaded.MORSE_CODE);
+        var morseHelper = new SignDecoder(stackalloc char[SignDecoder.SpanLength], Preloaded.MORSE_CODE, true);
 
         return DecodeBitsToText(bits, morseHelper);
     }
     
-    public static string DecodeBitsToText(string bits, MorseHelper morseHelper)
+    public static string DecodeBitsToText(string bits, SignDecoder signDecoder)
     {
         Span<char> morse = stackalloc char[bits.Length / 2 + 2]; // todo
         DecodeBitsToMorse(bits, ref morse);
 
         var text = morse; // reuse
-        DecodeMorseToText(morse, morseHelper, ref text);
+        DecodeMorseToText(morse, signDecoder, ref text);
         
         return new string(text);
     }
@@ -333,7 +333,7 @@ public static class MorseDecoder
         }
     }
 
-    private static void DecodeMorseToText(ReadOnlySpan<char> morse, MorseHelper morseHelper, ref Span<char> result)
+    private static void DecodeMorseToText(ReadOnlySpan<char> morse, SignDecoder signDecoder, ref Span<char> result)
     {
         var resultLength = 0;
         var offset = 0;
@@ -350,25 +350,15 @@ public static class MorseDecoder
                 indexOfSpace += offset;
             }
 
-            var morseChar = morse[offset..indexOfSpace];
-            var c = morseHelper.DecodeMorse(morseChar);
-            if (c.HasValue)
+            var morseSymbol = morse[offset..indexOfSpace];
+            var decodedMorse = signDecoder.DecodeSign(morseSymbol);
+            // ReSharper disable once ForCanBeConvertedToForeach
+            for (var i = 0; i < decodedMorse.Length; i++)
             {
-                result[resultLength] = c.Value;
+                result[resultLength] = decodedMorse[i];
                 resultLength++;
             }
-            else
-            {
-                var decodeMorseLong = morseHelper.DecodeMorseLong(morseChar);
-                if (!string.IsNullOrEmpty(decodeMorseLong))
-                {
-                    for (var i = 0; i < decodeMorseLong.Length; i++)
-                    {
-                        result[resultLength] = decodeMorseLong[i];
-                        resultLength++;
-                    }
-                }
-            }
+            
             if (indexOfSpace + 1 < morse.Length && morse[indexOfSpace + 1] == ' ')
             {
                 offset = indexOfSpace + 3;

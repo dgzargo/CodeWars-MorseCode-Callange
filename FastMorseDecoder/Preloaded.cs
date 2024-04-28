@@ -1,4 +1,4 @@
-﻿namespace CodeWars;
+﻿namespace FastMorseDecoder;
 
 public static class Preloaded
 {
